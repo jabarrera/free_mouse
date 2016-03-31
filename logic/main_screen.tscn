@@ -1,0 +1,162 @@
+[gd_scene load_steps=9 format=1]
+
+[ext_resource path="res://logic/main_screen.gd" type="Script" id=1]
+[ext_resource path="res://resource/graphics/wallpaper.jpg" type="Texture" id=2]
+[ext_resource path="res://resource/graphics/menu_play_off.png" type="Texture" id=3]
+[ext_resource path="res://resource/graphics/menu_quit_off.png" type="Texture" id=4]
+[ext_resource path="res://resource/graphics/menu_levels_off.png" type="Texture" id=5]
+[ext_resource path="res://resource/graphics/menu_credits_off.png" type="Texture" id=6]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 72.8491, 30.1509 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 65.0248, 25.2286 )
+
+[node name="Mainscreen" type="Node2D"]
+
+script/script = ExtResource( 1 )
+__meta__ = { "__editor_plugin_screen__":"2D" }
+
+[node name="wallpaper" type="Sprite" parent="."]
+
+transform/pos = Vector2( 320, 240 )
+texture = ExtResource( 2 )
+
+[node name="menu" type="Node2D" parent="."]
+
+[node name="Play" type="Area2D" parent="menu"]
+
+transform/pos = Vector2( 102, 352 )
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, -4.84909, -1.84909 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+__meta__ = { "_edit_group_":true, "_editor_collapsed":true }
+
+[node name="Sprite" type="Sprite" parent="menu/Play"]
+
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="menu/Play"]
+
+transform/pos = Vector2( -4.84909, -1.84909 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Quit" type="Area2D" parent="menu"]
+
+transform/pos = Vector2( 272, 422 )
+input/pickable = true
+shapes/0/shape = SubResource( 2 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0.713478, -1.66479 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+__meta__ = { "_edit_group_":true, "_editor_collapsed":true }
+
+[node name="Sprite" type="Sprite" parent="menu/Quit"]
+
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="menu/Quit"]
+
+transform/pos = Vector2( 0.713478, -1.66479 )
+shape = SubResource( 2 )
+trigger = false
+_update_shape_index = 0
+
+[node name="levels" type="Area2D" parent="menu"]
+
+transform/pos = Vector2( 102, 422 )
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, -4.84909, -1.84909 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+__meta__ = { "_edit_group_":true, "_editor_collapsed":true }
+
+[node name="Sprite" type="Sprite" parent="menu/levels"]
+
+texture = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="menu/levels"]
+
+transform/pos = Vector2( -4.84909, -1.84909 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="credits" type="Area2D" parent="menu"]
+
+transform/pos = Vector2( 282, 342 )
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 3.84909, 1.15091 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+__meta__ = { "_edit_group_":true, "_editor_collapsed":true }
+
+[node name="Sprite" type="Sprite" parent="menu/credits"]
+
+texture = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="menu/credits"]
+
+transform/pos = Vector2( 3.84909, 1.15091 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = ""
+
+[connection signal="mouse_enter" from="menu/Play" to="." method="_on_Play_mouse_enter"]
+
+[connection signal="input_event" from="menu/Play" to="." method="_on_Play_input_event"]
+
+[connection signal="mouse_exit" from="menu/Play" to="." method="_on_Play_mouse_exit"]
+
+[connection signal="mouse_enter" from="menu/Quit" to="." method="_on_Quit_mouse_enter"]
+
+[connection signal="input_event" from="menu/Quit" to="." method="_on_Quit_input_event"]
+
+[connection signal="mouse_exit" from="menu/Quit" to="." method="_on_Quit_mouse_exit"]
+
+[connection signal="mouse_enter" from="menu/levels" to="." method="_on_levels_mouse_enter"]
+
+[connection signal="input_event" from="menu/levels" to="." method="_on_levels_input_event"]
+
+[connection signal="mouse_exit" from="menu/levels" to="." method="_on_levels_mouse_exit"]
+
+[connection signal="mouse_enter" from="menu/credits" to="." method="_on_credits_mouse_enter"]
+
+[connection signal="input_event" from="menu/credits" to="." method="_on_credits_input_event"]
+
+[connection signal="mouse_exit" from="menu/credits" to="." method="_on_credits_mouse_exit"]
+
+

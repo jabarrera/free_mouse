@@ -1,0 +1,121 @@
+[gd_scene load_steps=15 format=1]
+
+[ext_resource path="res://logic/level1.gd" type="Script" id=1]
+[ext_resource path="res://resource/graphics/level1/level1_bg.jpg" type="Texture" id=2]
+[ext_resource path="res://resource/graphics/level1/nivel1_map.png" type="Texture" id=3]
+[ext_resource path="res://logic/finish.tscn" type="PackedScene" id=4]
+[ext_resource path="res://logic/mouse.tscn" type="PackedScene" id=5]
+[ext_resource path="res://logic/lives.tscn" type="PackedScene" id=6]
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -62.968, 16.4945, 270.069, 16.4945, 269.406, 59.6169, -63.6314, 59.6169 )
+
+[sub_resource type="ConvexPolygonShape2D" id=2]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 272.723, -58.472, 272.059, -16.0131, -63.4279, -17.3629, -62.8876, -61.132, -55.9362, -172.664 )
+
+[sub_resource type="ConvexPolygonShape2D" id=3]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 272.723, -58.472, -55.9362, -172.664, 396.119, -164.619, 347.689, -57.1451 )
+
+[sub_resource type="ConvexPolygonShape2D" id=4]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 347.689, -57.1451, 396.119, -164.619, 395.456, 186.33, 347.026, 61.6071 )
+
+[sub_resource type="ConvexPolygonShape2D" id=5]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 269.406, 59.6169, 347.026, 61.6071, 395.456, 186.33, -185.037, 189.647, -63.6314, 59.6169 )
+
+[sub_resource type="ConvexPolygonShape2D" id=6]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -143.905, 58.29, -63.6314, 59.6169, -185.037, 189.647 )
+
+[sub_resource type="ConvexPolygonShape2D" id=7]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -143.905, 58.29, -185.037, 189.647, -184.374, -165.946, -142.578, -61.7891 )
+
+[sub_resource type="ConvexPolygonShape2D" id=8]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -49.3935, -176.583, -62.968, -61.1257, -142.578, -61.7891, -184.374, -165.946 )
+
+[node name="Level1" type="Node2D"]
+
+script/script = ExtResource( 1 )
+__meta__ = { "__editor_plugin_screen__":"2D" }
+
+[node name="background" type="Sprite" parent="."]
+
+transform/pos = Vector2( 320, 240 )
+texture = ExtResource( 2 )
+__meta__ = { "_edit_lock_":true }
+
+[node name="level" type="Area2D" parent="."]
+
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 216.6, 227.43 )
+shapes/0/trigger = true
+shapes/1/shape = SubResource( 2 )
+shapes/1/transform = Matrix32( 1, 0, 0, 1, 216.6, 227.43 )
+shapes/1/trigger = true
+shapes/2/shape = SubResource( 3 )
+shapes/2/transform = Matrix32( 1, 0, 0, 1, 216.6, 227.43 )
+shapes/2/trigger = true
+shapes/3/shape = SubResource( 4 )
+shapes/3/transform = Matrix32( 1, 0, 0, 1, 216.6, 227.43 )
+shapes/3/trigger = true
+shapes/4/shape = SubResource( 5 )
+shapes/4/transform = Matrix32( 1, 0, 0, 1, 216.6, 227.43 )
+shapes/4/trigger = true
+shapes/5/shape = SubResource( 6 )
+shapes/5/transform = Matrix32( 1, 0, 0, 1, 216.6, 227.43 )
+shapes/5/trigger = true
+shapes/6/shape = SubResource( 7 )
+shapes/6/transform = Matrix32( 1, 0, 0, 1, 216.6, 227.43 )
+shapes/6/trigger = true
+shapes/7/shape = SubResource( 8 )
+shapes/7/transform = Matrix32( 1, 0, 0, 1, 216.6, 227.43 )
+shapes/7/trigger = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+
+[node name="maze" type="Sprite" parent="level"]
+
+transform/pos = Vector2( 326.705, 253.602 )
+texture = ExtResource( 3 )
+
+[node name="colission" type="CollisionPolygon2D" parent="level"]
+
+transform/pos = Vector2( 216.6, 227.43 )
+build_mode = 0
+polygon = Vector2Array( -62.968, -61.1257, -142.578, -61.7891, -143.905, 58.29, -63.6314, 59.6169, -62.968, 16.4945, 270.069, 16.4945, 269.406, 59.6169, 347.026, 61.6071, 347.689, -57.1451, 272.723, -58.472, 272.059, -16.0131, -63.4279, -17.3629, -62.8876, -61.132, -55.9362, -172.664, 396.119, -164.619, 395.456, 186.33, -185.037, 189.647, -184.374, -165.946, -49.3935, -176.583 )
+shape_range = Vector2( 0, 7 )
+trigger = true
+
+[node name="finish" parent="." instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 525.714, 228.876 )
+input/pickable = false
+linear_damp = 0.1
+
+[node name="mouse" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 115.266, 227.01 )
+linear_damp = 0.1
+
+[node name="lives" parent="." instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 548.162, 8.95955 )
+
+

@@ -1,0 +1,75 @@
+[gd_scene load_steps=5 format=1]
+
+[ext_resource path="res://logic/record.gd" type="Script" id=1]
+[ext_resource path="res://resource/graphics/time_record.png" type="Texture" id=2]
+[ext_resource path="res://resource/graphics/chars/0.png" type="Texture" id=3]
+[ext_resource path="res://resource/graphics/chars/two_points.png" type="Texture" id=4]
+
+[node name="record" type="Node2D"]
+
+script/script = ExtResource( 1 )
+__meta__ = { "__editor_plugin_screen__":"Script" }
+
+[node name="text_record" type="Sprite" parent="."]
+
+transform/pos = Vector2( 320.221, 326.873 )
+texture = ExtResource( 2 )
+
+[node name="minutes" type="Node2D" parent="."]
+
+transform/pos = Vector2( 212.986, 376.31 )
+__meta__ = { "_editor_collapsed":true }
+
+[node name="minutes_1" type="Sprite" parent="minutes"]
+
+texture = ExtResource( 3 )
+
+[node name="minutes_2" type="Sprite" parent="minutes"]
+
+transform/pos = Vector2( 32, 0 )
+texture = ExtResource( 3 )
+
+[node name="separator" type="Sprite" parent="."]
+
+transform/pos = Vector2( 273.523, 374.518 )
+texture = ExtResource( 4 )
+
+[node name="seconds" type="Node2D" parent="."]
+
+transform/pos = Vector2( 299.986, 376.31 )
+__meta__ = { "_editor_collapsed":true }
+
+[node name="seconds_1" type="Sprite" parent="seconds"]
+
+texture = ExtResource( 3 )
+
+[node name="seconds_2" type="Sprite" parent="seconds"]
+
+transform/pos = Vector2( 32, 0 )
+texture = ExtResource( 3 )
+
+[node name="separator1" type="Sprite" parent="."]
+
+transform/pos = Vector2( 354.523, 374.518 )
+texture = ExtResource( 4 )
+
+[node name="mil" type="Node2D" parent="."]
+
+transform/pos = Vector2( 378.986, 376.31 )
+__meta__ = { "_editor_collapsed":true }
+
+[node name="mil_1" type="Sprite" parent="mil"]
+
+texture = ExtResource( 3 )
+
+[node name="mil_2" type="Sprite" parent="mil"]
+
+transform/pos = Vector2( 32, 0 )
+texture = ExtResource( 3 )
+
+[node name="mil_3" type="Sprite" parent="mil"]
+
+transform/pos = Vector2( 64, 0 )
+texture = ExtResource( 3 )
+
+

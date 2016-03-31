@@ -1,0 +1,945 @@
+[gd_scene load_steps=20 format=1]
+
+[ext_resource path="res://logic/levels.gd" type="Script" id=1]
+[ext_resource path="res://resource/graphics/levels_bg.jpg" type="Texture" id=2]
+[ext_resource path="res://resource/graphics/level1_mini_off.png" type="Texture" id=3]
+[ext_resource path="res://resource/graphics/candado.png" type="Texture" id=4]
+[ext_resource path="res://resource/graphics/level2_mini_off.png" type="Texture" id=5]
+[ext_resource path="res://resource/graphics/level3_mini_off.png" type="Texture" id=6]
+[ext_resource path="res://resource/graphics/level4_mini_off.png" type="Texture" id=7]
+[ext_resource path="res://resource/graphics/level5_mini_off.png" type="Texture" id=8]
+[ext_resource path="res://resource/graphics/level6_mini_off.png" type="Texture" id=9]
+[ext_resource path="res://resource/graphics/level7_mini_off.png" type="Texture" id=10]
+[ext_resource path="res://resource/graphics/level8_mini_off.png" type="Texture" id=11]
+[ext_resource path="res://resource/graphics/level9_mini_off.png" type="Texture" id=12]
+[ext_resource path="res://resource/graphics/level10_mini_off.png" type="Texture" id=13]
+[ext_resource path="res://logic/back.tscn" type="PackedScene" id=14]
+[ext_resource path="res://resource/graphics/menu_arrow_off.png" type="Texture" id=15]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 76.0282, 57.0326 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 25.3389, 15.4328 )
+
+[sub_resource type="Animation" id=3]
+
+length = 0.5
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("levels1_9:transform/pos")
+tracks/0/interp = 1
+tracks/0/keys = { "cont":true, "times":FloatArray( 0, 0.5 ), "transitions":FloatArray( 1, 1 ), "values":[ Vector2( 0, 0 ), Vector2( -630, 0 ) ] }
+tracks/1/type = "value"
+tracks/1/path = NodePath("level10:transform/pos")
+tracks/1/interp = 1
+tracks/1/keys = { "cont":true, "times":FloatArray( 0, 0.5 ), "transitions":FloatArray( 1, 1 ), "values":[ Vector2( 752, 222 ), Vector2( 322, 222 ) ] }
+
+[sub_resource type="Animation" id=4]
+
+length = 0.5
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("level10:transform/pos")
+tracks/0/interp = 1
+tracks/0/keys = { "cont":true, "times":FloatArray( 0, 0.5 ), "transitions":FloatArray( 1, 1 ), "values":[ Vector2( 322, 222 ), Vector2( 742, 222 ) ] }
+tracks/1/type = "value"
+tracks/1/path = NodePath("levels1_9:transform/pos")
+tracks/1/interp = 1
+tracks/1/keys = { "cont":true, "times":FloatArray( 0, 0.5 ), "transitions":FloatArray( 1, 1 ), "values":[ Vector2( -630, 0 ), Vector2( 0, 0 ) ] }
+
+[node name="levels" type="Node2D"]
+
+script/script = ExtResource( 1 )
+__meta__ = { "__editor_plugin_screen__":"Script" }
+
+[node name="background" type="Sprite" parent="."]
+
+transform/pos = Vector2( 320, 240 )
+texture = ExtResource( 2 )
+
+[node name="levels1_9" type="Node2D" parent="."]
+
+__meta__ = { "_editor_collapsed":true }
+
+[node name="level1" type="Area2D" parent="levels1_9"]
+
+transform/pos = Vector2( 112, 82 )
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, -1.9718, -0.9674 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+__meta__ = { "_edit_group_":true }
+
+[node name="level" type="Sprite" parent="levels1_9/level1"]
+
+texture = ExtResource( 3 )
+
+[node name="info" type="Container" parent="levels1_9/level1"]
+
+visibility/visible = false
+margin/right = 40.0
+margin/bottom = 40.0
+focus/ignore_mouse = true
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+__meta__ = { "_editor_collapsed":true }
+
+[node name="Label" type="Label" parent="levels1_9/level1/info"]
+
+margin/left = -30.0
+margin/top = 13.0
+margin/right = 26.0
+margin/bottom = 26.0
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+custom_colors/font_color = Color( 0.714844, 0.0949402, 0.0949402, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Best time"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="time" type="Label" parent="levels1_9/level1/info"]
+
+margin/left = -57.0
+margin/top = 25.0
+margin/right = 1.0
+margin/bottom = 38.0
+rect/scale = Vector2( 2, 2 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+custom_colors/font_color = Color( 0.713726, 0.0941176, 0.0941176, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "00:00:000"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="padlock" type="Sprite" parent="levels1_9/level1"]
+
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="levels1_9/level1"]
+
+transform/pos = Vector2( -1.9718, -0.9674 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+__meta__ = { "_edit_group_":true }
+
+[node name="level2" type="Area2D" parent="levels1_9"]
+
+transform/pos = Vector2( 322, 82 )
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 2 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+__meta__ = { "_edit_group_":true, "_editor_collapsed":true }
+
+[node name="level" type="Sprite" parent="levels1_9/level2"]
+
+transform/pos = Vector2( 0, 2 )
+texture = ExtResource( 5 )
+
+[node name="info" type="Container" parent="levels1_9/level2"]
+
+visibility/visible = false
+margin/left = 2.0
+margin/top = 2.0
+margin/right = 42.0
+margin/bottom = 42.0
+focus/ignore_mouse = true
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+__meta__ = { "_editor_collapsed":true }
+
+[node name="Label" type="Label" parent="levels1_9/level2/info"]
+
+margin/left = -30.0
+margin/top = 13.0
+margin/right = 26.0
+margin/bottom = 26.0
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+custom_colors/font_color = Color( 0.713726, 0.0941176, 0.0941176, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Best time"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="time" type="Label" parent="levels1_9/level2/info"]
+
+margin/left = -57.0
+margin/top = 25.0
+margin/right = 1.0
+margin/bottom = 38.0
+rect/scale = Vector2( 2, 2 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+custom_colors/font_color = Color( 0.713726, 0.0941176, 0.0941176, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "00:00:000"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="padlock" type="Sprite" parent="levels1_9/level2"]
+
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="levels1_9/level2"]
+
+transform/pos = Vector2( 0, 2 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+__meta__ = { "_edit_group_":true }
+
+[node name="level3" type="Area2D" parent="levels1_9"]
+
+transform/pos = Vector2( 532, 82 )
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+__meta__ = { "_edit_group_":true }
+
+[node name="level" type="Sprite" parent="levels1_9/level3"]
+
+texture = ExtResource( 6 )
+
+[node name="info" type="Container" parent="levels1_9/level3"]
+
+visibility/visible = false
+margin/left = 2.0
+margin/right = 42.0
+margin/bottom = 40.0
+focus/ignore_mouse = true
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+__meta__ = { "_editor_collapsed":true }
+
+[node name="Label" type="Label" parent="levels1_9/level3/info"]
+
+margin/left = -30.0
+margin/top = 13.0
+margin/right = 26.0
+margin/bottom = 26.0
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+custom_colors/font_color = Color( 0.713726, 0.0941176, 0.0941176, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Best time"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="time" type="Label" parent="levels1_9/level3/info"]
+
+margin/left = -57.0
+margin/top = 25.0
+margin/right = 1.0
+margin/bottom = 38.0
+rect/scale = Vector2( 2, 2 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+custom_colors/font_color = Color( 0.713726, 0.0941176, 0.0941176, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "00:00:000"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="padlock" type="Sprite" parent="levels1_9/level3"]
+
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="levels1_9/level3"]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+__meta__ = { "_edit_group_":true }
+
+[node name="level4" type="Area2D" parent="levels1_9"]
+
+transform/pos = Vector2( 112, 222 )
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+__meta__ = { "_edit_group_":true }
+
+[node name="level" type="Sprite" parent="levels1_9/level4"]
+
+texture = ExtResource( 7 )
+
+[node name="info" type="Container" parent="levels1_9/level4"]
+
+visibility/visible = false
+margin/top = -1.0
+margin/right = 40.0
+margin/bottom = 39.0
+focus/ignore_mouse = true
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+__meta__ = { "_editor_collapsed":true }
+
+[node name="Label" type="Label" parent="levels1_9/level4/info"]
+
+margin/left = -30.0
+margin/top = 13.0
+margin/right = 26.0
+margin/bottom = 26.0
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+custom_colors/font_color = Color( 0.713726, 0.0941176, 0.0941176, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Best time"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="time" type="Label" parent="levels1_9/level4/info"]
+
+margin/left = -57.0
+margin/top = 25.0
+margin/right = 1.0
+margin/bottom = 38.0
+rect/scale = Vector2( 2, 2 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+custom_colors/font_color = Color( 0.713726, 0.0941176, 0.0941176, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "00:00:000"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="padlock" type="Sprite" parent="levels1_9/level4"]
+
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="levels1_9/level4"]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+__meta__ = { "_edit_group_":true }
+
+[node name="level5" type="Area2D" parent="levels1_9"]
+
+transform/pos = Vector2( 322, 222 )
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+__meta__ = { "_edit_group_":true }
+
+[node name="level" type="Sprite" parent="levels1_9/level5"]
+
+texture = ExtResource( 8 )
+
+[node name="info" type="Container" parent="levels1_9/level5"]
+
+visibility/visible = false
+margin/left = 2.0
+margin/top = -1.0
+margin/right = 42.0
+margin/bottom = 39.0
+focus/ignore_mouse = true
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+__meta__ = { "_editor_collapsed":true }
+
+[node name="Label" type="Label" parent="levels1_9/level5/info"]
+
+margin/left = -30.0
+margin/top = 13.0
+margin/right = 26.0
+margin/bottom = 26.0
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+custom_colors/font_color = Color( 0.713726, 0.0941176, 0.0941176, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Best time"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="time" type="Label" parent="levels1_9/level5/info"]
+
+margin/left = -57.0
+margin/top = 25.0
+margin/right = 1.0
+margin/bottom = 38.0
+rect/scale = Vector2( 2, 2 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+custom_colors/font_color = Color( 0.713726, 0.0941176, 0.0941176, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "00:00:000"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="padlock" type="Sprite" parent="levels1_9/level5"]
+
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="levels1_9/level5"]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+__meta__ = { "_edit_group_":true }
+
+[node name="level6" type="Area2D" parent="levels1_9"]
+
+transform/pos = Vector2( 532, 222 )
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+__meta__ = { "_edit_group_":true }
+
+[node name="level" type="Sprite" parent="levels1_9/level6"]
+
+texture = ExtResource( 9 )
+
+[node name="info" type="Container" parent="levels1_9/level6"]
+
+visibility/visible = false
+margin/left = 2.0
+margin/right = 42.0
+margin/bottom = 40.0
+focus/ignore_mouse = true
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+__meta__ = { "_editor_collapsed":true }
+
+[node name="Label" type="Label" parent="levels1_9/level6/info"]
+
+margin/left = -30.0
+margin/top = 13.0
+margin/right = 26.0
+margin/bottom = 26.0
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+custom_colors/font_color = Color( 0.713726, 0.0941176, 0.0941176, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Best time"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="time" type="Label" parent="levels1_9/level6/info"]
+
+margin/left = -57.0
+margin/top = 25.0
+margin/right = 1.0
+margin/bottom = 38.0
+rect/scale = Vector2( 2, 2 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+custom_colors/font_color = Color( 0.713726, 0.0941176, 0.0941176, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "00:00:000"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="padlock" type="Sprite" parent="levels1_9/level6"]
+
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="levels1_9/level6"]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+__meta__ = { "_edit_group_":true }
+
+[node name="level7" type="Area2D" parent="levels1_9"]
+
+transform/pos = Vector2( 112, 362 )
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+__meta__ = { "_edit_group_":true }
+
+[node name="level" type="Sprite" parent="levels1_9/level7"]
+
+texture = ExtResource( 10 )
+
+[node name="info" type="Container" parent="levels1_9/level7"]
+
+visibility/visible = false
+margin/top = -2.0
+margin/right = 40.0
+margin/bottom = 38.0
+focus/ignore_mouse = true
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+
+[node name="Label" type="Label" parent="levels1_9/level7/info"]
+
+margin/left = -30.0
+margin/top = 13.0
+margin/right = 26.0
+margin/bottom = 26.0
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+custom_colors/font_color = Color( 0.713726, 0.0941176, 0.0941176, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Best time"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="time" type="Label" parent="levels1_9/level7/info"]
+
+margin/left = -57.0
+margin/top = 25.0
+margin/right = 1.0
+margin/bottom = 38.0
+rect/scale = Vector2( 2, 2 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+custom_colors/font_color = Color( 0.713726, 0.0941176, 0.0941176, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "00:00:000"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="padlock" type="Sprite" parent="levels1_9/level7"]
+
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="levels1_9/level7"]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+__meta__ = { "_edit_group_":true }
+
+[node name="level8" type="Area2D" parent="levels1_9"]
+
+transform/pos = Vector2( 322, 362 )
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+__meta__ = { "_edit_group_":true }
+
+[node name="level" type="Sprite" parent="levels1_9/level8"]
+
+texture = ExtResource( 11 )
+
+[node name="info" type="Container" parent="levels1_9/level8"]
+
+visibility/visible = false
+margin/left = 2.0
+margin/top = -4.0
+margin/right = 42.0
+margin/bottom = 36.0
+focus/ignore_mouse = true
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+
+[node name="Label" type="Label" parent="levels1_9/level8/info"]
+
+margin/left = -30.0
+margin/top = 13.0
+margin/right = 26.0
+margin/bottom = 26.0
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+custom_colors/font_color = Color( 0.713726, 0.0941176, 0.0941176, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Best time"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="time" type="Label" parent="levels1_9/level8/info"]
+
+margin/left = -57.0
+margin/top = 25.0
+margin/right = 1.0
+margin/bottom = 38.0
+rect/scale = Vector2( 2, 2 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+custom_colors/font_color = Color( 0.713726, 0.0941176, 0.0941176, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "00:00:000"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="padlock" type="Sprite" parent="levels1_9/level8"]
+
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="levels1_9/level8"]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+__meta__ = { "_edit_group_":true }
+
+[node name="level9" type="Area2D" parent="levels1_9"]
+
+transform/pos = Vector2( 532, 362 )
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+__meta__ = { "_edit_group_":true, "_editor_collapsed":true }
+
+[node name="level" type="Sprite" parent="levels1_9/level9"]
+
+texture = ExtResource( 12 )
+
+[node name="info" type="Container" parent="levels1_9/level9"]
+
+visibility/visible = false
+margin/left = 2.0
+margin/top = -5.0
+margin/right = 42.0
+margin/bottom = 35.0
+focus/ignore_mouse = true
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+
+[node name="Label" type="Label" parent="levels1_9/level9/info"]
+
+margin/left = -30.0
+margin/top = 13.0
+margin/right = 26.0
+margin/bottom = 26.0
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+custom_colors/font_color = Color( 0.713726, 0.0941176, 0.0941176, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Best time"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="time" type="Label" parent="levels1_9/level9/info"]
+
+margin/left = -57.0
+margin/top = 25.0
+margin/right = 1.0
+margin/bottom = 38.0
+rect/scale = Vector2( 2, 2 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+custom_colors/font_color = Color( 0.713726, 0.0941176, 0.0941176, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "00:00:000"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="padlock" type="Sprite" parent="levels1_9/level9"]
+
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="levels1_9/level9"]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+__meta__ = { "_edit_group_":true }
+
+[node name="level10" type="Area2D" parent="."]
+
+transform/pos = Vector2( 742, 222 )
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+__meta__ = { "_edit_group_":true, "_editor_collapsed":true }
+
+[node name="level" type="Sprite" parent="level10"]
+
+texture = ExtResource( 13 )
+
+[node name="info" type="Container" parent="level10"]
+
+visibility/visible = false
+margin/left = 1.0
+margin/top = -1.0
+margin/right = 41.0
+margin/bottom = 39.0
+focus/ignore_mouse = true
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+
+[node name="Label" type="Label" parent="level10/info"]
+
+margin/left = -30.0
+margin/top = 13.0
+margin/right = 26.0
+margin/bottom = 26.0
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+custom_colors/font_color = Color( 0.713726, 0.0941176, 0.0941176, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Best time"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="time" type="Label" parent="level10/info"]
+
+margin/left = -57.0
+margin/top = 25.0
+margin/right = 1.0
+margin/bottom = 38.0
+rect/scale = Vector2( 2, 2 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+custom_colors/font_color = Color( 0.713726, 0.0941176, 0.0941176, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "00:00:000"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="padlock" type="Sprite" parent="level10"]
+
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="level10"]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+__meta__ = { "_edit_group_":true }
+
+[node name="back" parent="." instance=ExtResource( 14 )]
+
+transform/pos = Vector2( 39.0964, 454.867 )
+linear_damp = 0.1
+
+[node name="next_levels" type="Area2D" parent="."]
+
+transform/pos = Vector2( 592, 452 )
+transform/rot = 180.0
+input/pickable = true
+shapes/0/shape = SubResource( 2 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, -3.09175, 0.713482 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+__meta__ = { "_edit_group_":true, "_editor_collapsed":true }
+
+[node name="Sprite" type="Sprite" parent="next_levels"]
+
+transform/pos = Vector2( 0.814499, -0.814503 )
+texture = ExtResource( 15 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="next_levels"]
+
+transform/pos = Vector2( -3.09175, 0.713482 )
+shape = SubResource( 2 )
+trigger = false
+_update_shape_index = 0
+
+[node name="prevs_levels" type="Area2D" parent="."]
+
+visibility/visible = false
+transform/pos = Vector2( 596, 452 )
+input/pickable = true
+shapes/0/shape = SubResource( 2 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, -3.09175, 0.713482 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+__meta__ = { "_edit_group_":true, "_editor_collapsed":true }
+
+[node name="Sprite" type="Sprite" parent="prevs_levels"]
+
+transform/pos = Vector2( 0.814499, -0.814503 )
+texture = ExtResource( 15 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="prevs_levels"]
+
+transform/pos = Vector2( -3.09175, 0.713482 )
+shape = SubResource( 2 )
+trigger = false
+_update_shape_index = 0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/next_level = SubResource( 3 )
+anims/prev_levels = SubResource( 4 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = ""
+
+[connection signal="mouse_enter" from="levels1_9/level1" to="." method="_on_level1_mouse_enter"]
+
+[connection signal="input_event" from="levels1_9/level1" to="." method="_on_level1_input_event"]
+
+[connection signal="mouse_exit" from="levels1_9/level1" to="." method="_on_level1_mouse_exit"]
+
+[connection signal="mouse_enter" from="levels1_9/level2" to="." method="_on_level2_mouse_enter"]
+
+[connection signal="input_event" from="levels1_9/level2" to="." method="_on_level2_input_event"]
+
+[connection signal="mouse_exit" from="levels1_9/level2" to="." method="_on_level2_mouse_exit"]
+
+[connection signal="mouse_enter" from="levels1_9/level3" to="." method="_on_level3_mouse_enter"]
+
+[connection signal="input_event" from="levels1_9/level3" to="." method="_on_level3_input_event"]
+
+[connection signal="mouse_exit" from="levels1_9/level3" to="." method="_on_level3_mouse_exit"]
+
+[connection signal="mouse_enter" from="levels1_9/level4" to="." method="_on_level4_mouse_enter"]
+
+[connection signal="input_event" from="levels1_9/level4" to="." method="_on_level4_input_event"]
+
+[connection signal="mouse_exit" from="levels1_9/level4" to="." method="_on_level4_mouse_exit"]
+
+[connection signal="mouse_enter" from="levels1_9/level5" to="." method="_on_level5_mouse_enter"]
+
+[connection signal="input_event" from="levels1_9/level5" to="." method="_on_level5_input_event"]
+
+[connection signal="mouse_exit" from="levels1_9/level5" to="." method="_on_level5_mouse_exit"]
+
+[connection signal="mouse_enter" from="levels1_9/level6" to="." method="_on_level6_mouse_enter"]
+
+[connection signal="input_event" from="levels1_9/level6" to="." method="_on_level6_input_event"]
+
+[connection signal="mouse_exit" from="levels1_9/level6" to="." method="_on_level6_mouse_exit"]
+
+[connection signal="mouse_enter" from="levels1_9/level7" to="." method="_on_level7_mouse_enter"]
+
+[connection signal="input_event" from="levels1_9/level7" to="." method="_on_level7_input_event"]
+
+[connection signal="mouse_exit" from="levels1_9/level7" to="." method="_on_level7_mouse_exit"]
+
+[connection signal="mouse_enter" from="levels1_9/level8" to="." method="_on_level8_mouse_enter"]
+
+[connection signal="input_event" from="levels1_9/level8" to="." method="_on_level8_input_event"]
+
+[connection signal="mouse_exit" from="levels1_9/level8" to="." method="_on_level8_mouse_exit"]
+
+[connection signal="mouse_enter" from="levels1_9/level9" to="." method="_on_level9_mouse_enter"]
+
+[connection signal="input_event" from="levels1_9/level9" to="." method="_on_level9_input_event"]
+
+[connection signal="mouse_exit" from="levels1_9/level9" to="." method="_on_level9_mouse_exit"]
+
+[connection signal="mouse_enter" from="level10" to="." method="_on_level10_mouse_enter"]
+
+[connection signal="input_event" from="level10" to="." method="_on_level10_input_event"]
+
+[connection signal="mouse_exit" from="level10" to="." method="_on_level10_mouse_exit"]
+
+[connection signal="mouse_enter" from="next_levels" to="." method="_on_next_levels_mouse_enter"]
+
+[connection signal="input_event" from="next_levels" to="." method="_on_next_levels_input_event"]
+
+[connection signal="mouse_exit" from="next_levels" to="." method="_on_next_levels_mouse_exit"]
+
+[connection signal="mouse_enter" from="prevs_levels" to="." method="_on_prevs_levels_mouse_enter"]
+
+[connection signal="input_event" from="prevs_levels" to="." method="_on_prevs_levels_input_event"]
+
+[connection signal="mouse_exit" from="prevs_levels" to="." method="_on_prevs_levels_mouse_exit"]
+
+

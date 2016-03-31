@@ -1,0 +1,83 @@
+[gd_scene load_steps=8 format=1]
+
+[ext_resource path="res://logic/mouse.gd" type="Script" id=1]
+[ext_resource path="res://resource/graphics/aura_roja.png" type="Texture" id=2]
+[ext_resource path="res://resource/graphics/raton.png" type="Texture" id=3]
+[ext_resource path="res://resource/graphics/click_text.png" type="Texture" id=4]
+[ext_resource path="res://resource/graphics/bloody_mouse.png" type="Texture" id=5]
+
+[sub_resource type="CircleShape2D" id=1]
+
+custom_solver_bias = 0.0
+radius = 13.0352
+
+[sub_resource type="Animation" id=2]
+
+resource/name = "text"
+length = 0.5
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("text_click:transform/scale")
+tracks/0/interp = 1
+tracks/0/keys = { "cont":true, "times":FloatArray( 0, 0.25, 0.5 ), "transitions":FloatArray( 1, 1, 1 ), "values":[ Vector2( 1, 1 ), Vector2( 2, 2 ), Vector2( 1, 1 ) ] }
+
+[node name="mouse" type="Area2D"]
+
+transform/pos = Vector2( 319.486, 233.748 )
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, -1.28784, -1.28784 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 1 )
+__meta__ = { "__editor_plugin_screen__":"Script" }
+
+[node name="aura" type="Sprite" parent="."]
+
+texture = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+
+transform/pos = Vector2( -0.903473, -0.903168 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+transform/pos = Vector2( -1.28784, -1.28784 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="text_click" type="Sprite" parent="."]
+
+transform/pos = Vector2( -2, -26 )
+texture = ExtResource( 4 )
+
+[node name="death" type="Sprite" parent="."]
+
+visibility/visible = false
+transform/pos = Vector2( -5, -5 )
+texture = ExtResource( 5 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/text = SubResource( 2 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = ""
+
+[connection signal="area_enter" from="." to="." method="_on_area_enter"]
+
+[connection signal="mouse_enter" from="." to="." method="_on_mouse_mouse_enter"]
+
+[connection signal="input_event" from="." to="." method="_on_mouse_input_event"]
+
+

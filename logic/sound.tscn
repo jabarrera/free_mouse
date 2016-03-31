@@ -1,0 +1,58 @@
+[gd_scene load_steps=11 format=1]
+
+[ext_resource path="res://logic/sound.gd" type="Script" id=1]
+[ext_resource path="res://resource/sfx/19486__halleck__jacobsladdersingle1_electricity.smp" type="Sample" id=2]
+[ext_resource path="res://resource/sfx/142608__autistic-lucario__error.smp" type="Sample" id=3]
+[ext_resource path="res://resource/sfx/315753__vurca__running-gear1.smp" type="Sample" id=4]
+[ext_resource path="res://resource/sfx/188043__antumdeluge__mouse2.smp" type="Sample" id=5]
+[ext_resource path="res://resource/sfx/256128__jimhancock__tada.smp" type="Sample" id=6]
+[ext_resource path="res://resource/sfx/270319__littlerobotsoundfactory__jingle-win-01.smp" type="Sample" id=7]
+[ext_resource path="res://resource/sfx/29543__bennychico11__wink.smp" type="Sample" id=8]
+
+[sub_resource type="SampleLibrary" id=1]
+
+samples/win = { "db":0.0, "pitch":1.0, "sample":ExtResource( 7 ) }
+samples/wink = { "db":-5.0, "pitch":1.0, "sample":ExtResource( 8 ) }
+samples/electricity = { "db":0.0, "pitch":1.0, "sample":ExtResource( 2 ) }
+samples/mouse = { "db":0.0, "pitch":1.0, "sample":ExtResource( 5 ) }
+samples/fail = { "db":0.0, "pitch":1.0, "sample":ExtResource( 3 ) }
+samples/tada = { "db":0.0, "pitch":1.0, "sample":ExtResource( 6 ) }
+samples/gear = { "db":0.0, "pitch":1.0, "sample":ExtResource( 4 ) }
+
+[sub_resource type="AudioStreamOGGVorbis" id=2]
+
+
+[node name="sound" type="Node"]
+
+script/script = ExtResource( 1 )
+__meta__ = { "__editor_plugin_screen__":"Script" }
+
+[node name="SamplePlayer" type="SamplePlayer" parent="."]
+
+config/polyphony = 10
+config/samples = SubResource( 1 )
+default/volume_db = 0.0
+default/pitch_scale = 1.0
+default/pan = 0.0
+default/depth = 0.0
+default/height = 0.0
+default/filter/type = 0
+default/filter/cutoff = 5000.0
+default/filter/resonance = 1.0
+default/filter/gain = 1.0
+default/reverb_room = 2
+default/reverb_send = 0.0
+default/chorus_send = 0.0
+
+[node name="StreamPlayer" type="StreamPlayer" parent="."]
+
+stream/stream = SubResource( 2 )
+stream/play = false
+stream/loop = true
+stream/volume_db = 0.0
+stream/autoplay = false
+stream/paused = false
+stream/loop_restart_time = 0.0
+stream/buffering_ms = 500
+
+

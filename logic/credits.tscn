@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=1]
+
+[ext_resource path="res://logic/credits.gd" type="Script" id=1]
+[ext_resource path="res://resource/graphics/credits.jpg" type="Texture" id=2]
+[ext_resource path="res://logic/back.tscn" type="PackedScene" id=3]
+
+[node name="credits" type="Node2D"]
+
+script/script = ExtResource( 1 )
+__meta__ = { "__editor_plugin_screen__":"Script" }
+
+[node name="Sprite" type="Sprite" parent="."]
+
+transform/pos = Vector2( 320, 240 )
+texture = ExtResource( 2 )
+
+[node name="back" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 42, 452 )
+linear_damp = 0.1
+
+

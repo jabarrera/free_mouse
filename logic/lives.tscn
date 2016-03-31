@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://logic/lives.gd" type="Script" id=1]
+[ext_resource path="res://resource/graphics/raton.png" type="Texture" id=2]
+
+[node name="lives" type="Node2D"]
+
+script/script = ExtResource( 1 )
+__meta__ = { "__editor_plugin_screen__":"Script" }
+
+[node name="una" type="Sprite" parent="."]
+
+transform/pos = Vector2( 12, 13 )
+texture = ExtResource( 2 )
+
+[node name="dos" type="Sprite" parent="."]
+
+transform/pos = Vector2( 42, 13 )
+texture = ExtResource( 2 )
+
+[node name="tres" type="Sprite" parent="."]
+
+transform/pos = Vector2( 72, 13 )
+texture = ExtResource( 2 )
+
+
